@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:customAttribute="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:orientation="vertical"
+    tools:context=".onlineexam.OnlineExam">
+
+
+    <include
+        android:id="@+id/toolbar_ID_online_exam"
+        layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/examCreate"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@color/ic_launcher_background">
+
+                <Button
+                    android:text="Create theory exam"
+                    android:id="@+id/Create_theory_exam"
+                    android:textSize="13dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:padding="10sp"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@color/ic_launcher_background">
+            <Button
+                android:text="Create M.C.Q exam"
+                android:id="@+id/Create_M_C_Q_exam"
+                android:textSize="13dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@android:color/white"
+                android:background="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+    </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:id="@+id/coursCardView"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="#FCFCFA">
+        <LinearLayout
+            android:weightSum="12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/caudex"
+                    android:scrollbars="horizontal"
+                    android:textSize="11dp"
+                    android:id="@+id/examViewTitle"
+                    android:text="Tile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/caudex"
+                    android:scrollbars="horizontal"
+                    android:maxLines="1"
+                    android:layout_marginRight="3dp"
+                    android:textSize="11dp"
+                    android:gravity="center"
+                    android:id="@+id/examViewCatagory"
+                    android:text="category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/caudex"
+                    android:maxLines="1"
+                    android:scrollbars="horizontal"
+                    android:layout_marginLeft="2dp"
+                    android:textSize="11dp"
+                    android:gravity="center"
+                    android:id="@+id/examViewDuration"
+                    android:text="Duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/caudex"
+                    android:textSize="11dp"
+                    android:gravity="center"
+                    android:id="@+id/examViewMark"
+                    android:text="Mark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="2.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:fontFamily="@font/caudex"
+                    android:textSize="11dp"
+                    android:id="@+id/examViewDate"
+                    android:text="Start Date "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:fontFamily="@font/caudex"
+                    android:textSize="11dp"
+                    android:id="@+id/examViewStartTime"
+                    android:text="Start Time "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/caudex"
+                    android:gravity="center"
+                    android:text="Action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/onlineExamListRecyclerVIew"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

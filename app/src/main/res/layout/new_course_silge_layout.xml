@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginRight="4dp"
+    android:layout_weight="50"
+    app:cardCornerRadius="4dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <HorizontalScrollView
+            android:scrollbars="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:maxLines="1"
+                    android:id="@+id/coursName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Basic Programming"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/calibri"/>
+                <TextView
+                    android:maxLines="1"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/calibri"
+                    android:text="("
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:maxLines="1"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/calibri"
+                    android:text="BC"
+                    android:id="@+id/coursCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:maxLines="1"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/calibri"
+                    android:text=")"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:maxLines="1"
+            android:id="@+id/techearName_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/calibri"
+            android:text="Dr. Felix "
+            android:textSize="14sp" />
+        <TextView
+            android:maxLines="1"
+            android:id="@+id/sectionName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/calibri"
+            android:text="A"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:padding="10dp"
+                android:maxLines="1"
+                android:textColor="@android:color/holo_red_dark"
+                android:id="@+id/unfollowTexView"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/calibri"
+                android:text="Unfollow"
+                android:textAlignment="textEnd"
+                android:textSize="16sp" />
+            <TextView
+                android:visibility="gone"
+                android:textColor="@android:color/holo_green_dark"
+                android:id="@+id/followTexView"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/calibri"
+                android:text=" Following"
+                android:textAlignment="textEnd"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".routin_add_activity"
+    android:orientation="vertical"
+    >
+    <include
+        android:id="@+id/toolbar_ID"
+        layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+
+
+
+    <EditText
+       android:visibility="gone"
+        android:id="@+id/serial"
+        android:layout_margin="5dp"
+        android:drawableLeft="@drawable/ic_looks_number"
+        android:textSize="15dp"
+        android:hint="Serial No:"
+        android:inputType="number"
+        android:maxLength="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+
+        android:drawableLeft="@drawable/ic_library_books_black"
+        android:id="@+id/subject"
+        android:layout_margin="5dp"
+        android:textSize="15dp"
+        android:hint="Subject "
+        android:maxLength="40"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:drawableLeft="@drawable/ic_home"
+        android:id="@+id/room"
+        android:layout_margin="5dp"
+        android:textSize="15dp"
+        android:hint="Room No:"
+        android:maxLength="15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:drawableLeft="@drawable/ic_person"
+        android:id="@+id/techer"
+        android:layout_margin="5dp"
+        android:textSize="15dp"
+        android:hint=" Teacher Name :"
+        android:maxLength="15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            >
+
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:src="@drawable/ic_access_time"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+
+            android:id="@+id/start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_border"
+            android:text="Select Start  Time "
+            android:padding="5dp"
+            android:textSize="15dp"
+            />
+        <TextView
+            android:id="@+id/end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_border"
+            android:padding="5dp"
+            android:text="Select Ending Time"
+            android:textSize="15dp"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkbox_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SUN"/>
+            <CheckBox
+                android:id="@+id/checkbox_mon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MON"/>
+            <CheckBox
+                android:id="@+id/checkbox_tue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TUE"/>
+                <CheckBox
+                    android:id="@+id/checkbox_wed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WED"/>
+                <CheckBox
+                    android:id="@+id/checkbox_thu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="THU"/>
+                <CheckBox
+                    android:id="@+id/checkbox_fri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FRI"/>
+                <CheckBox
+                    android:id="@+id/checkbox_sat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SAT"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_marginTop="5dp"
+            android:id="@+id/add_button"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:text="add"
+            android:textSize="16dp"
+            android:backgroundTint="@color/Button_color"
+            android:background="@drawable/rounded_border"
+            android:layout_width="100dp"
+            android:textColor="#ffff"
+            android:layout_height="40dp" />
+
+
+
+    </RelativeLayout>
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:adSize="BANNER"
+            android:layout_marginBottom="60dp"
+            app:adUnitId="@string/banner_ads">
+        </com.google.android.gms.ads.AdView>
+        <EditText
+            android:visibility="gone"
+            android:id="@+id/day_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/idView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+</LinearLayout>

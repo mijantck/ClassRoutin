@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/news_feed_card"
+    android:elevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        >
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_gravity="center"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image_post_cretore"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_person"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#FFFF"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="5.5"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+           <TextView
+               android:textAllCaps="true"
+               android:fontFamily="@font/caudex"
+               android:id="@+id/news_course_core"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="post cretore "
+               android:textSize="12dp"
+               android:textColor="#000"
+               />
+            <TextView
+                android:fontFamily="@font/caudex"
+                android:id="@+id/news_course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Course Name"
+                android:textColor="#000"
+                android:textSize="10dp"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2.5"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:fontFamily="@font/caudex"
+                    android:visibility="gone"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:id="@+id/deletePost"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ic_delete"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
+                <TextView
+                    android:fontFamily="@font/caudex"
+                    android:id="@+id/news_course_Date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:textSize="10dp"
+                    android:gravity="left"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:fontFamily="@font/caudex"
+                android:textSize="10dp"
+                android:id="@+id/news_course_Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+        <TextView
+            android:fontFamily="@font/caudex"
+            android:visibility="visible"
+            android:id="@+id/news_feed_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:elevation="1dp"
+            android:gravity="top"
+            android:autoLink="all"
+            android:textSize="14sp"
+            android:linksClickable="true"
+            android:scrollbars="vertical"
+            android:hint=" Write Your Mind"
+            android:maxHeight="2000dp"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            />
+
+       <!-- <me.relex.photodraweeview.PhotoDraweeView
+            android:visibility="visible"
+            android:id="@+id/newsFeedImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:failureImageScaleType="centerInside"
+            app:placeholderImageScaleType="centerCrop"
+            app:progressBarAutoRotateInterval="1000"
+            app:progressBarImage="@drawable/ic_loading"
+            app:progressBarImageScaleType="centerInside"/>-->
+
+     <!--   <com.easyzoom.EasyZoomImageViewer
+            android:visibility="visible"
+            android:id="@+id/newsFeedImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:contentDescription="@null" />-->
+
+       <!-- <ozaydin.serkan.com.image_zoom_view.ImageViewZoom
+            android:visibility="visible"
+            android:id="@+id/newsFeedImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:circle="true" />-->
+        <ImageView
+            android:visibility="visible"
+            android:id="@+id/newsFeedImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+
+            />
+        <TextView
+            android:fontFamily="@font/caudex"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:text="PDF"
+            android:maxLines="1"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000"
+            android:textSize="13dp"
+            android:id="@+id/newsFeedPdfButton"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:attr/selectableItemBackground"
+            >
+            <ImageButton
+                android:id="@+id/news_feed_Share_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/ic_share_black"
+                />
+            <TextView
+                android:fontFamily="@font/caudex"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

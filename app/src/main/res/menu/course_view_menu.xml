@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/all_lecture"
+            android:title="All Lecture"
+            android:icon="@drawable/ic_cours"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/course_outline"
+            android:title="Course Outline"
+            android:icon="@drawable/ic_course_out"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/assignments"
+            android:title="Assignments"
+            android:icon="@drawable/ic_add_alert"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/online_exam"
+            android:title="Online Exam"
+            android:icon="@drawable/ic_outline_article"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/join_class"
+            android:title="Join class"
+            android:icon="@drawable/ic_meeting"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/attendance"
+            android:title="Attendance"
+            android:icon="@drawable/ic_outline_groups"
+            app:showAsAction="never"/>
+
+        <item
+            android:id="@+id/participants"
+            android:title="Participants"
+            android:icon="@drawable/ic_outline_groups"
+            app:showAsAction="never"/>
+
+
+    </group>
+</menu>

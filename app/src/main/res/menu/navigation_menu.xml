@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/add_navigation"
+        android:icon="@drawable/ic_add"
+        android:title="Add Routine"/>
+    <item android:id="@+id/task_navigation"
+        android:icon="@drawable/ic_task_navigation"
+        android:title="Task"/>
+    <item android:id="@+id/exm_navigation"
+        android:icon="@drawable/ic_school_black_24dp"
+        android:title="Exam"/>
+
+</menu>

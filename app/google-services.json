@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "35856902221",
+    "firebase_url": "https://classroutin.firebaseio.com",
+    "project_id": "classroutin",
+    "storage_bucket": "classroutin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35856902221:android:c3ec052d3c84ebf9",
+        "android_client_info": {
+          "package_name": "com.mijan.classroutin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35856902221-iu9v4955cf2rhsdd25kqbrf7nlfppsog.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mijan.classroutin",
+            "certificate_hash": "d3f8f39acdfd57432c6e3989b7778774c6594c05"
+          }
+        },
+        {
+          "client_id": "35856902221-orad6p94ts8rjbn8rju8uckqq75h5hj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNIEJvMImXEFau1zXlQOutJGmSELX0Du8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35856902221-orad6p94ts8rjbn8rju8uckqq75h5hj6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

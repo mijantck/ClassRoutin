@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mijan.classroutin">
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".MCPMeeting"></activity>
+        <activity android:name=".ImageViewActivity" />
+        <activity android:name=".TheoryAnsView" />
+        <activity android:name=".ansViewtheory" />
+        <activity android:name=".AnsviewTheoryAndAsingment" />
+        <activity android:name=".AsingmetCreatSubmit" />
+        <activity android:name=".Assiningment" />
+        <activity android:name=".Attendece" />
+        <activity android:name=".onlineexam.TheoryExamCreat" />
+        <activity android:name=".StudentSubmitAnsList" />
+        <activity android:name=".onlineexam.ExamAttendStudenList" />
+        <activity android:name=".onlineexam.ExamRanning" />
+        <activity android:name=".onlineexam.Onlne_create_exam_type" />
+        <activity android:name=".onlineexam.OnlineMCQExamCreator" />
+        <activity android:name=".onlineexam.OnineMCQExam" />
+        <activity android:name=".onlineexam.CreateOnlineExamTheory" />
+        <activity android:name=".onlineexam.OnlineExam" />
+        <activity android:name=".Perticifents" />
+        <activity android:name=".AllLecture" />
+        <activity android:name=".CourseOutLine" />
+        <activity android:name=".cours.CourseFullView" />
+        <activity android:name=".AlarmActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".cours.GroupSingleView" />
+        <activity android:name=".cours.NewCourse" />
+        <activity android:name=".onlineexam.ExamAdded" />
+        <activity android:name=".LibraryPdfUpoad" />
+        <activity android:name=".OnlineLibarary" />
+        <activity android:name=".cours.AddInMyGroupActivity" />
+        <activity android:name=".PdfViewer" />
+        <activity android:name=".NewsFeedActivity" />
+        <activity android:name=".NewsFeedAddedActivity" />
+        <activity android:name=".cours.MyCourse" />
+        <activity android:name=".signIn_activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NewNoteActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".TaskActivitiy" />
+        <activity android:name=".onlineexam.ExmActivity" />
+        <activity android:name=".routin_add_activity" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".MyAlarm"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

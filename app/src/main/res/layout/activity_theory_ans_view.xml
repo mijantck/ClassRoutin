@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TheoryAnsView"
+    android:orientation="vertical">
+    <LinearLayout
+        android:padding="8dp"
+        android:id="@+id/buttonListforStudenttheoryAns"
+        android:layout_below="@+id/toolbar_ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="2dp"
+        android:gravity="right">
+
+        <TextView
+            android:text="10:00:00"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_marginRight="70dp"
+            android:gravity="center"
+            android:id="@+id/timecounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:padding="10sp"
+            android:id="@+id/tehoryExamQuasAddforStudenttheoryAns"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text=" SUBMIT "
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:padding="8dp"
+        android:visibility="visible"
+        android:id="@+id/mainneewsadd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rol Number"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/examNameTheoryforStudenttheoryAns"
+                android:textSize="16sp"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint=" page number "
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/examNameTheoryPageNumberforStudenttheoryAns"
+                android:textSize="16sp"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp">
+
+            <Button
+                android:id="@+id/ImageChosserQuastionforStudenttheoryAns"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/ic_image"
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/ImageChosserQuastionViewforStudenttheoryAns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

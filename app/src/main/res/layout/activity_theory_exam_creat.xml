@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".onlineexam.TheoryExamCreat">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar_ID_theory"
+        layout="@layout/toolbar" />
+    <LinearLayout
+        android:padding="8dp"
+        android:id="@+id/buttonList"
+        android:layout_below="@+id/toolbar_ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="2dp"
+        android:gravity="right">
+        <TextView
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:padding="10sp"
+            android:id="@+id/tehoryExamQuasAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text=" SUBMIT "
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:padding="10sp"
+            android:id="@+id/tehoryExamQuasView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text=" view questions "
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:padding="10sp"
+            android:id="@+id/tehoryExamQuasViewStudentView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text=" Student list "
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:padding="8dp"
+        android:visibility="visible"
+        android:id="@+id/mainneewsadd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/newfeedlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/news_course_Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Subject Name Or Exam Name "
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/examNameTheory"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint=" page number "
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/examNameTheoryPageNumber"
+                android:textSize="16sp"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp">
+
+            <!--  <Button
+                  android:id="@+id/PDFChosser"
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:background="@drawable/ic_attach_file"
+                  android:textColor="#fff"
+                  android:textSize="15dp" />-->
+
+            <Button
+                android:id="@+id/ImageChosserQuastion"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/ic_image"
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+            <!--   <EditText
+                   android:id="@+id/ImageChosserQuastionName"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="5dp"
+                   android:background="@null"
+                   android:hint="File Name"
+                   android:maxLines="1" />-->
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/newsFeedAddedImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY" />
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/ImageChosserQuastionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:padding="8dp"
+        android:visibility="gone"
+        android:id="@+id/theoryExamPeparViewRecyclerView"
+        android:layout_marginTop="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
+</LinearLayout>
