@@ -24,6 +24,9 @@
     <string name="banner_ads">ca-app-pub-3940256099942544/6300978111</string>
     <string name="intsial_ads">ca-app-pub-3940256099942544/1033173712</string>
 
+    <string name="intsial_ads1">ca-app-pub-3940256099942544/1033173712</string>
+
+
     <string name="OPEN_WEATHER_MAP_API_KEY">d86d2123bd5fcc52c491172b9918a64d</string>
 
 </resources>
