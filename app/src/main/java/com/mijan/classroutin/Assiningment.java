@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,7 +41,8 @@ public class Assiningment extends AppCompatActivity {
     AssingmentViewrAdapter assingmentViewrAdapter;
     ProgressDialog progressDialog;
 
-
+    FirebaseAuth auth;
+    FirebaseUser currentUser;
 
 
     @Override
@@ -51,6 +53,9 @@ public class Assiningment extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_ID_assimget);
         toolbar.setTitle(" Assignment ");
         setSupportActionBar(toolbar);
+
+        auth = FirebaseAuth.getInstance();
+        currentUser = auth.getCurrentUser();
 
         progressDialog = new ProgressDialog(Assiningment.this);
         progressDialog.setMessage("Loading..."); // Setting Message
@@ -66,6 +71,14 @@ public class Assiningment extends AppCompatActivity {
 
 
         Make_Assignments_texview_button = findViewById(R.id.Make_Assignments_texview_button);
+
+
+
+        if (!currentUser.getUid().equals(CoursCretorID)){
+
+            Make_Assignments_texview_button.setVisibility(View.GONE);
+
+        }
         Make_Assignments_texview_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -230,11 +230,13 @@ public class AsingmetCreatSubmit extends AppCompatActivity implements EasyPermis
             public void onClick(View v) {
                 progressDialog.show();
 
+
+                if (upDate.isEmpty()){
+                    Toast.makeText(AsingmetCreatSubmit.this, "Select Date ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (upDate != null){
-
                     if (mImageUri == null){
-
-
                         Toast.makeText(AsingmetCreatSubmit.this, "udate", Toast.LENGTH_LONG).show();
                         String asName = asingment_Name.getText().toString();
                         String subPNaber = asingment_PageNumber.getText().toString();
