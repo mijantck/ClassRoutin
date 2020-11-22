@@ -113,7 +113,6 @@ public class AsingmetCreatSubmit extends AppCompatActivity implements EasyPermis
         progressDialog = new ProgressDialog(AsingmetCreatSubmit.this);
         progressDialog.setMessage("Loading..."); // Setting Message
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setCancelable(false);
 
 
         Bundle bundle = getIntent().getExtras();
