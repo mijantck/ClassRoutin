@@ -83,10 +83,6 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.TimeZone;
 
-import static android.content.Context.LOCATION_SERVICE;
-import static androidx.constraintlayout.motion.widget.MotionScene.TAG;
-import static com.example.easywaylocation.EasyWayLocation.LOCATION_SETTING_REQUEST_CODE;
-
 public class fragment_home extends Fragment  {
 
     String uid = FirebaseAuth.getInstance().getUid();

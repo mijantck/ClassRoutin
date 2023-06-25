@@ -32,7 +32,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
+
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -53,6 +56,7 @@ import com.mijan.classroutin.NewsFeedAddedActivity;
 import com.mijan.classroutin.Note.AttendenceNote;
 import com.mijan.classroutin.Perticifents;
 import com.mijan.classroutin.R;
+import com.mijan.classroutin.activity.MainActivity;
 import com.mijan.classroutin.adapter.NewsAdapter;
 import com.mijan.classroutin.onlineexam.OnlineExam;
 import com.squareup.picasso.Picasso;
@@ -124,39 +128,26 @@ public class GroupSingleView extends AppCompatActivity {
         current = mAuth.getCurrentUser();
         userInfo = new JitsiMeetUserInfo();
 
-        mInterstitialAd = new InterstitialAd(this);
+        AdRequest adRequest = new AdRequest.Builder().build();
 
-        mInterstitialAd.setAdUnitId(getString(R.string.intsial_ads));
+        InterstitialAd.load(this,getString(R.string.intsial_ads), adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        Log.i("dfd", "onAdLoaded");
+                        showInterstitial();
+                    }
 
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-
-
-        mInterstitialAd.setAdListener(new AdListener() {
-
-            public void onAdLoaded() {
-
-                showInterstitial();
-
-            }
-
-        }); mInterstitialAd = new InterstitialAd(this);
-
-        mInterstitialAd.setAdUnitId(getString(R.string.intsial_ads));
-
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-
-
-        mInterstitialAd.setAdListener(new AdListener() {
-
-            public void onAdLoaded() {
-
-                showInterstitial();
-
-            }
-
-        });
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.d("safas", loadAdError.toString());
+                        mInterstitialAd = null;
+                    }
+                });
 
 
         recyclerView = findViewById(R.id.recyclearViewGroupSingle);
@@ -573,8 +564,10 @@ public class GroupSingleView extends AppCompatActivity {
 
     private void showInterstitial() {
 
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
+        if (mInterstitialAd != null) {
+            mInterstitialAd.show(GroupSingleView.this);
+        } else {
+            Log.d("TAG", "The interstitial ad wasn't ready yet.");
         }
 
     }
