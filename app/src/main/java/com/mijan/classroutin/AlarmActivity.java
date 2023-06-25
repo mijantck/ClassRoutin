@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mijan.classroutin.activity.MainActivity;
+
 public class AlarmActivity extends AppCompatActivity {
 
 
@@ -62,7 +64,7 @@ public class AlarmActivity extends AppCompatActivity {
                 if(r.isPlaying())
                 {
                     r.stop();
-                    Intent intent = new Intent(AlarmActivity.this,MainActivity.class);
+                    Intent intent = new Intent(AlarmActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }

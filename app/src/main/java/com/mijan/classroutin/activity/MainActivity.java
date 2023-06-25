@@ -1,10 +1,13 @@
-package com.mijan.classroutin;
+package com.mijan.classroutin.activity;
 
 import android.Manifest;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -20,8 +23,12 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,16 +39,24 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.mijan.classroutin.AboutActivity;
+import com.mijan.classroutin.MCPMeeting;
+import com.mijan.classroutin.NewsFeedActivity;
+import com.mijan.classroutin.OnlineLibarary;
+import com.mijan.classroutin.R;
+import com.mijan.classroutin.TaskActivitiy;
 import com.mijan.classroutin.cours.AddInMyGroupActivity;
 import com.mijan.classroutin.cours.MyCourse;
 import com.mijan.classroutin.cours.NewCourse;
 import com.mijan.classroutin.onlineexam.ExmActivity;
+import com.mijan.classroutin.routin_add_activity;
+import com.mijan.classroutin.viewpagerAdapter;
 import com.squareup.picasso.Picasso;
 
 import pub.devrel.easypermissions.EasyPermissions;
@@ -53,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser current;
 
-    private AdView mAdView;
+
     private InterstitialAd mInterstitialAd;
 
     FirebaseAuth.AuthStateListener mAuthLisenar;
@@ -62,23 +77,18 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
-
-
     private static final int PICK_IMAGE_REQUEST = 1;
 
     String[] perms = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ,Manifest.permission.READ_EXTERNAL_STORAGE
-            ,Manifest.permission.ACCESS_NETWORK_STATE
-            ,Manifest.permission.ACCESS_WIFI_STATE
-            ,Manifest.permission.INTERNET
-            ,Manifest.permission.VIBRATE
-            ,Manifest.permission.CAMERA};
+            , Manifest.permission.READ_EXTERNAL_STORAGE
+            , Manifest.permission.ACCESS_NETWORK_STATE
+            , Manifest.permission.ACCESS_WIFI_STATE
+            , Manifest.permission.INTERNET
+            , Manifest.permission.VIBRATE
+            , Manifest.permission.CAMERA};
 
 
-
-
-    BottomNavigationItemView add_navigation, tesk_navigation, exm_navigation;
 
     private DrawerLayout drawer;
 
@@ -97,21 +107,13 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar_ID);
         setSupportActionBar(toolbar);
-
         viewpagerAdapter viewpagerAdapter = new viewpagerAdapter(getSupportFragmentManager());
-
         mAuth = FirebaseAuth.getInstance();
-
         current = mAuth.getCurrentUser();
 
 
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabMode);
-
-        add_navigation = findViewById(R.id.add_navigation);
-        tesk_navigation = findViewById(R.id.task_navigation);
-        exm_navigation = findViewById(R.id.exm_navigation);
-
         viewPager.setAdapter(viewpagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -122,37 +124,51 @@ public class MainActivity extends AppCompatActivity {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-        // [END configure_signin]
-
-        // [START build_client]
-        // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         // [END build_client]
 
         updateVavHeader();
 
-
-        mInterstitialAd = new InterstitialAd(this);
-
-        mInterstitialAd.setAdUnitId(getString(R.string.intsial_ads));
-
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-
-
-        mInterstitialAd.setAdListener(new AdListener() {
-
-            public void onAdLoaded() {
-
-             //   showInterstitial();
-
-            }
-
-        });
-
-        mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+
+        InterstitialAd.load(this,getString(R.string.intsial_ads), adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        Log.i("dfd", "onAdLoaded");
+                        showInterstitial();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.d("safas", loadAdError.toString());
+                        mInterstitialAd = null;
+                    }
+                });
+
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("asdsad", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+
+                        Log.d("asdsad", token);
+                       // Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -164,16 +180,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.my_course:
 
                         if (EasyPermissions.hasPermissions(MainActivity.this, perms)) {
-
-
                             Intent my_courseIntent = new Intent(MainActivity.this, MyCourse.class);
                             startActivity(my_courseIntent);
 
                         } else {
-                            EasyPermissions.requestPermissions(MainActivity.this, "We need permissions because this and that",
-                                    PICK_IMAGE_REQUEST , perms);
-
-
+                            EasyPermissions.requestPermissions(MainActivity.this, "We need permissions because this and that", PICK_IMAGE_REQUEST, perms);
                         }
 
                         break;
@@ -189,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent new_aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
                         startActivity(new_aboutIntent);
                         break;
-                        case R.id.mcpMeeting:
+                    case R.id.mcpMeeting:
                         Intent mcpMeetingIntent = new Intent(MainActivity.this, MCPMeeting.class);
                         startActivity(mcpMeetingIntent);
                         break;
@@ -209,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                         Toast.makeText(getApplication(), "Sign Out Complete ", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, signIn_activity.class));
+                        startActivity(new Intent(MainActivity.this, SignInActivity.class));
                         finish();
                         break;
 
@@ -224,12 +235,10 @@ public class MainActivity extends AppCompatActivity {
 
                         } else {
                             EasyPermissions.requestPermissions(MainActivity.this, "We need permissions because this and that",
-                                    PICK_IMAGE_REQUEST , perms);
-
+                                    PICK_IMAGE_REQUEST, perms);
 
 
                         }
-
 
 
                         break;
@@ -251,17 +260,14 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
 
-        mAuthLisenar = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() == null) {
-                    startActivity(new Intent(MainActivity.this, signIn_activity.class));
-                    finish();
-                }
+        mAuthLisenar = firebaseAuth -> {
+            if (firebaseAuth.getCurrentUser() == null) {
+                startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                finish();
             }
         };
 
-        onclick();
+
 
     }
 
@@ -285,8 +291,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
                     EasyPermissions.requestPermissions(MainActivity.this, "We need permissions because this and that",
-                            PICK_IMAGE_REQUEST , perms);
-
+                            PICK_IMAGE_REQUEST, perms);
 
 
                 }
@@ -297,30 +302,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onclick() {
-
-        add_navigation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, routin_add_activity.class);
-                startActivity(intent);
-            }
-        });
-        tesk_navigation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TaskActivitiy.class);
-                startActivity(intent);
-            }
-        });
-        exm_navigation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ExmActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
 
 
     @Override
@@ -353,10 +334,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void showInterstitial() {
 
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
+        if (mInterstitialAd != null) {
+            mInterstitialAd.show(MainActivity.this);
+        } else {
+            Log.d("TAG", "The interstitial ad wasn't ready yet.");
         }
-
     }
 
     // [START revokeAccess]
