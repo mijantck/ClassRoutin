@@ -4,60 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signIn_activity"
+    tools:context=".activity.SignInActivity"
     android:gravity="center"
+    android:background="@drawable/splash_back"
     android:orientation="vertical">
 
 
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/halloweenLottie"
+        android:layout_width="280dp"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="staduy_file.json"
+        app:lottie_loop="true" />
     <TextView
+        android:layout_marginTop="40dp"
+        android:textColor="@color/gph_white"
+        android:textSize="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Class Planner a cross-platform"
         android:textStyle="bold"
         />
     <TextView
+        android:textColor="@color/gph_white"
+        android:textSize="14dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="planner for students and teachers"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="60dp"
         android:textStyle="bold"
         />
-    
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ViewFlipper
-            android:id="@+id/viewflipper"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:autoStart="true"
-            android:flipInterval="2000"
-            >
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="40dp"
-                android:src="@drawable/sing_image"></ImageView>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="40dp"
-                android:src="@drawable/welcome_emoji_"></ImageView>
-
-        </ViewFlipper>
-
-    </RelativeLayout>
 
 
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/sign_in_button"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/signUpId"
+        android:elevation="4dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        app:cardCornerRadius="50dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"/>
+        android:layout_height="50dp">
+        <TextView
+            android:gravity="center"
+            android:text="Sign Up"
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/signId"
+        android:elevation="4dp"
+        android:backgroundTint="@color/text_color"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        app:cardCornerRadius="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:gravity="center"
+            android:text="Sign in"
+            android:textSize="18dp"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:elevation="4dp"
+        android:id="@+id/sign_in_button"
+        android:backgroundTint="@color/gph_white"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        app:cardCornerRadius="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:gravity="center"
+            android:text="Sign in with google"
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

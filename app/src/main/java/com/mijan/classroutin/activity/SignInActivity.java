@@ -1,4 +1,4 @@
-package com.mijan.classroutin;
+package com.mijan.classroutin.activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -7,11 +7,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -26,23 +27,22 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.mijan.classroutin.R;
 
-public class signIn_activity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
 
 
-    private SignInButton google_sign_button;
+    private CardView google_sign_button;
     GoogleSignInClient mGoogleSignInClient;
 
     private int RC_SIGN_IN = 999;
     private String TAG = "signIn_activity";
-
     private FirebaseAuth mAuth;
-    int mFlipping = 0 ; // Initially flipping is off
+
 
 
     FirebaseAuth.AuthStateListener mAuthLisenar;
-
     ProgressDialog progressDialog;
 
     @Override
@@ -56,34 +56,30 @@ public class signIn_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in_activity);
 
-
-        ViewFlipper flipper = (ViewFlipper) findViewById(R.id.viewflipper);
-
-        flipper.setAutoStart(true);
-
-        /*if(mFlipping==0){
-            *//** Start Flipping *//*
-            flipper.startFlipping();
-            mFlipping=1;
-
-        }
-        else{
-            *//** Stop Flipping *//*
-            flipper.stopFlipping();
-            mFlipping=0;
-
-        }*/
-
-
         google_sign_button = findViewById(R.id.sign_in_button);
         mAuth = FirebaseAuth.getInstance();
 
+        findViewById(R.id.signId)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(SignInActivity.this,LogInActivity.class));
+                    }
+                });
+
+        findViewById(R.id.signUpId)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(SignInActivity.this,SignUpActivity.class));
+                    }
+                });
 
         mAuthLisenar = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
-                  startActivity(new Intent(signIn_activity.this,MainActivity.class));
+                  startActivity(new Intent(SignInActivity.this, MainActivity.class));
                   finish();
                 }
 
@@ -92,7 +88,7 @@ public class signIn_activity extends AppCompatActivity {
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("35856902221-orad6p94ts8rjbn8rju8uckqq75h5hj6.apps.googleusercontent.com")
+                .requestIdToken(getResources().getString(R.string.google_login_id))
                 .requestEmail()
                 .build();
 
@@ -104,7 +100,7 @@ public class signIn_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                progressDialog = new ProgressDialog(signIn_activity.this);
+                progressDialog = new ProgressDialog(SignInActivity.this);
                 // Setting Message
                 progressDialog.setMessage("Loading..."); // Setting Title
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -115,16 +111,8 @@ public class signIn_activity extends AppCompatActivity {
 
                 }else {
 
-                    Toast.makeText(signIn_activity.this, " No internet ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, " No internet ", Toast.LENGTH_SHORT).show();
                 }
-
-
-
-                /*}else {
-
-                    Toast.makeText(signIn_activity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
-                }
-*/
 
             }
         });
@@ -135,7 +123,6 @@ public class signIn_activity extends AppCompatActivity {
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-
         startActivityForResult(signInIntent, RC_SIGN_IN);
 
     }
@@ -173,15 +160,13 @@ public class signIn_activity extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            //  updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(signIn_activity.this, " Any Thing Problem", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignInActivity.this, " Any Thing Problem", Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
 
-                        // ...
                     }
                 });
     }

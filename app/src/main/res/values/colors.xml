@@ -7,5 +7,13 @@
     <color name="mane_color">#0FA25A</color>
     <color name="Edit_text_bg">#4FEE82C6</color>
     <color name="Button_color">#098148</color>
+    <color name="green_40">#B3098148</color>
+    <color name="black">#B3000000</color>
+
+    <!--new Color-->
+    <color name="button_color">#539D82</color>
+    <color name="text_color">#73CE95</color>
+    <color name="text_gray_color">#8B8B8B</color>
+    <color name="bg_edite_text_color">#EBF2F0</color>
 
 </resources>

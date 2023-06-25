@@ -2,11 +2,15 @@ package com.mijan.classroutin.cours;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,7 +23,10 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -79,26 +86,28 @@ public class MyCourse extends AppCompatActivity {
         setUpRecyclerView();
 
 
-        mInterstitialAd = new InterstitialAd(this);
+        AdRequest adRequest = new AdRequest.Builder().build();
 
-        mInterstitialAd.setAdUnitId(getString(R.string.intsial_ads));
+        InterstitialAd.load(this,getString(R.string.intsial_ads), adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        Log.i("dfd", "onAdLoaded");
+                        showInterstitial();
+                    }
 
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-
-
-        mInterstitialAd.setAdListener(new AdListener() {
-
-            public void onAdLoaded() {
-
-             //   showInterstitial();
-
-            }
-
-        });
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.d("safas", loadAdError.toString());
+                        mInterstitialAd = null;
+                    }
+                });
 
         mAdView = findViewById(R.id.adViewCours);
-        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
 
@@ -181,10 +190,10 @@ public class MyCourse extends AppCompatActivity {
 
     private void showInterstitial() {
 
-        if (mInterstitialAd.isLoaded()) {
-
-            mInterstitialAd.show();
-
+        if (mInterstitialAd != null) {
+            mInterstitialAd.show(MyCourse.this);
+        } else {
+            Log.d("TAG", "The interstitial ad wasn't ready yet.");
         }
 
     }
